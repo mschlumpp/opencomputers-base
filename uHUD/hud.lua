@@ -22,3 +22,7 @@ function HUD:removeWidget(name)
   w:INTERNALdestroyComponents()
   self.widgets[name] = nil
 end
+
+function HUD:sync()
+   self.bridge.sync()
+end

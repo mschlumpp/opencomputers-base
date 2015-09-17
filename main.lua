@@ -17,6 +17,8 @@ function main()
 
       myStats:tick()
 
+      myHUD:sync()
+
       os.sleep(1)
    end
 end
