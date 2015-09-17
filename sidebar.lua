@@ -24,6 +24,7 @@ function Sidebar:addInfo(name, value)
   info["text"] = Label:new("infotext_" .. name, 1, 1, value, 0xDDDDDD)
   self.hud:addWidget(info["text"])
   info["text"]:setTextScale(0.5)
+  info["text"]:setObjectAnchor("right", "top")
 
   self.info[name] = info
   self:recalcPositions()
@@ -128,8 +129,9 @@ function Sidebar:recalcPositions()
   self.lastYDiff = 0
   for k,v in pairs(self.info) do
     v["label"]:setPosition(self.x, self.y + self.lastYDiff)
-    local textWidth = textWidthScale(self.hud.bridge, v["text"].text, 0.5)
-    v["text"]:setPosition(self.x + self.width - textWidth, self.y + self.lastYDiff)
+    -- local textWidth = textWidthScale(self.hud.bridge, v["text"].text, 0.5)
+    -- v["text"]:setPosition(self.x + self.width - textWidth, self.y + self.lastYDiff)
+    v["text"]:setPosition(self.x + self.width, self.y + self.lastYDiff)
     self.lastYDiff = self.lastYDiff + 6
   end
   for k,v in pairs(self.bars) do

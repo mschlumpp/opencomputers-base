@@ -2,8 +2,8 @@ local component = require("component")
 
 HUD = class("HUD")
 
-function HUD:initialize(side)
-  self.bridge = component.proxy(side)
+function HUD:initialize(address)
+  self.bridge = component[side]
   self.bridge.clear()
   self.widgets = {}
 end

@@ -25,3 +25,7 @@ function Label:setTextScale(scale)
   self.scale = scale
   self.components[1].setScale(scale)
 end
+
+function Label:setObjectAnchor(horizontal, vertical)
+   self.components[1].setObjectAnchor(horizontal, vertical)
+end

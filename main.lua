@@ -6,12 +6,19 @@ local os = require("os")
 local myHUD = HUD:new("openperipheral_bridge")
 local myStats = Sidebar:new(myHUD, "Base", 6, 20)
 
+local pablodeaths = 0
+
 function main()
-   mystats:addInfo("Pablo deaths", "9000")
+   myStats:addInfo("Pablo deaths", tostring(pablodeaths))
 
    while true do
-      mystats:tick()
+      pablodeaths = pablodeaths + 1
+      myStats:setInfo("Pablo deaths", tostring(pablodeaths))
+
+      myStats:tick()
 
       os.sleep(1)
    end
 end
+
+main()
