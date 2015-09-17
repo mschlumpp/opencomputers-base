@@ -3,7 +3,7 @@ local component = require("component")
 HUD = class("HUD")
 
 function HUD:initialize(address)
-  self.bridge = component[side]
+  self.bridge = component[address]
   self.bridge.clear()
   self.widgets = {}
 end
