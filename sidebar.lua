@@ -60,6 +60,7 @@ function Sidebar:addBar(name, value, label, lowWarning, highWarning)
   local lbl = Label:new("lbl_" .. name, 2, 2, label, 0xDDDDDD)
   self.hud:addWidget(lbl)
   lbl:setTextScale(0.5)
+  lbl:setObjectAnchor("right", "top")
 
   bar[1] = labelName
   bar[2] = bar
@@ -132,15 +133,12 @@ function Sidebar:recalcPositions()
   self.lastYDiff = 0
   for k,v in pairs(self.info) do
     v["label"]:setPosition(self.x, self.y + self.lastYDiff)
-    -- local textWidth = textWidthScale(self.hud.bridge, v["text"].text, 0.5)
-    -- v["text"]:setPosition(self.x + self.width - textWidth, self.y + self.lastYDiff)
     v["text"]:setPosition(self.x + self.width, self.y + self.lastYDiff)
     self.lastYDiff = self.lastYDiff + 6
   end
   for k,v in pairs(self.bars) do
     v[1]:setPosition(self.x, self.y + self.lastYDiff)
-    local labelWidth = textWidthScale(self.hud.bridge, v[5].text, 0.5)
-    v[5]:setPosition(self.x + self.width - labelWidth, self.y + self.lastYDiff)
+    v[5]:setPosition(self.x + self.width, self.y + self.lastYDiff)
     self.lastYDiff = self.lastYDiff + 5
     v[2]:setPosition(self.x, self.y + self.lastYDiff)
     self.lastYDiff = self.lastYDiff + 6 + 1 -- height + spacing for next bar
