@@ -18,6 +18,11 @@ local state = {
    max_energy = computer.maxEnergy(),
 }
 
+function round(num, idp)
+  local mult = 10^(idp or 0)
+  return math.floor(num * mult + 0.5) / mult
+end
+
 function updateState()
   state.uptime = computer.uptime()
   state.energy = computer.energy()
@@ -30,7 +35,7 @@ end
 function updateHUD()
   myStats:setInfo("Uptime", tostring(state.uptime))
 
-  myStats:setBarLabel("Computer Energy", tostring(state.energy))
+  myStats:setBarLabel("Computer Energy", tostring(round(state.energy, 2)))
   myStats:setBarValue("Computer Energy", state.energy / state.max_energy)
 
   myStats:tick()
