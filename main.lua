@@ -14,14 +14,25 @@ local state = {
    uptime = 0,
    hour = 0,
    minute = 0,
+   energy = 0,
+   max_energy = computer.maxEnergy(),
 }
 
 function updateState()
   state.uptime = computer.uptime()
+  state.energy = computer.energy()
+end
+
+function initHUD()
+  myStats:addBar("Computer Energy", 0, "", state.max_energy / 2)
 end
 
 function updateHUD()
   myStats:setInfo("Uptime", tostring(state.uptime))
+
+  myStats:setBarLabel("Computer Energy", tostring(state.energy))
+  myStats:setBarValue("Computer Energy", state.energy / state.max_energy)
+
   myStats:tick()
   myHUD:sync()
 end
@@ -51,6 +62,7 @@ function main()
     end
   }
 
+  initHUD()
   while running do
     dispatchEvent(handlers, event.pull())
   end
