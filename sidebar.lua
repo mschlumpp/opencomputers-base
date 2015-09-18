@@ -31,6 +31,9 @@ function Sidebar:addInfo(name, value)
 end
 
 function Sidebar:setInfo(name, value)
+  if not self.info[name] then
+    self:addInfo(name, value)
+  end
   self.info[name]["text"]:setText(value)
   self:recalcPositions()
 end
