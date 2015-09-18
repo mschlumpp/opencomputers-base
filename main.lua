@@ -58,7 +58,7 @@ function main()
 
   local running = true
 
-  event.timer(0.5, timerCallback, math.huge)
+  local tid = event.timer(0.5, timerCallback, math.huge)
   local handlers = {
     key_up = function(address, char, code, playername)
       if char == 116 then
@@ -71,6 +71,7 @@ function main()
   while running do
     dispatchEvent(handlers, event.pull())
   end
+  event.cancel(tid)
 end
 
 main()
