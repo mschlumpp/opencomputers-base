@@ -24,7 +24,7 @@ function updateState()
 end
 
 function initHUD()
-  myStats:addBar("Computer Energy", 0, "", 100)
+  myStats:addBar("Computer Energy", 0, "", 400 / state.max_energy)
 end
 
 function updateHUD()
