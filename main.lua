@@ -2,6 +2,7 @@ dofile("uHUD/uhud.lua")
 dofile("sidebar.lua")
 
 local os = require("os")
+local keyboard = require("keyboard")
 
 local myHUD = HUD:new("openperipheral_bridge")
 local myStats = Sidebar:new(myHUD, "Base", 6, 20)
@@ -18,6 +19,11 @@ function main()
       myStats:tick()
 
       myHUD:sync()
+
+      -- Check keyboard
+      if keyboard.isControlDown() and keyboard.isKeyDown("c") then
+         return
+      end
 
       os.sleep(1)
    end
