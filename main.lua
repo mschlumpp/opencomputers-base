@@ -38,6 +38,8 @@ function dispatchEvent(handlers, eventID, ...)
 end
 
 function main()
+  print("Press 't' to stop program.")
+
   local running = true
 
   event.timer(0.5, timerCallback, math.huge)
