@@ -6,7 +6,7 @@ function HorizontalBar:initialize(name, x, y, width, height, fg, bg, bordercolor
   self.bg = bg
   self.bordercolor = bordercolor
   self.opacity = opacity
-  
+
   self.value = 0
 
   self.borderpx = 1
@@ -29,7 +29,7 @@ end
 -- Value should be beetween 0.0 and 1.0
 function HorizontalBar:setValue(value)
   self.value = value
-  self.components[3].setWidth(self.innerwidth * self.value)  
+  self.components[3].setWidth(self.innerwidth * self.value)
 end
 
 function HorizontalBar:setFG(color, opacity)
