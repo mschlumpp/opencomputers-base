@@ -6,9 +6,11 @@ local keyboard = require("keyboard")
 local event = require("event")
 local math = require("math")
 local computer = require("computer")
+local component = require("component")
 
 local myHUD = HUD:new("openperipheral_bridge")
 local myStats = Sidebar:new(myHUD, "Base", 6, 20)
+local meController = component.me_controller
 
 local state = {
    uptime = 0,
@@ -16,11 +18,19 @@ local state = {
    minute = 0,
    energy = 0,
    max_energy = computer.maxEnergy(),
+   iron_amount = 0,
 }
 
 function updateState()
   state.uptime = computer.uptime()
   state.energy = computer.energy()
+
+  local items = meController.getAvailableItems()
+  for i, item in ipairs(items) do
+    if item.fingerprint.id == "minecraft:iron_ingot" then
+      state.iron_amount = item.size
+    end
+  end
 end
 
 function initHUD()
@@ -29,6 +39,7 @@ end
 
 function updateHUD()
   myStats:setInfo("Uptime", tostring(state.uptime))
+  myStats:setInfo("Iron Ingots", tostring(state.iron_amount))
 
   myStats:setBarLabel("Computer Energy", string.format("%.2f", state.energy))
   myStats:setBarValue("Computer Energy", state.energy / state.max_energy)
