@@ -42,8 +42,8 @@ function main()
 
   event.timer(0.5, timerCallback, math.huge)
   local handlers = {
-    "key_up" = function(address, char, code, playername)
-      if char == "t" then
+    key_up = function(address, char, code, playername)
+      if char == 116 then
         running = false
       end
     end
