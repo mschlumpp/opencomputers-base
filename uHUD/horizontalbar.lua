@@ -17,13 +17,13 @@ end
 function HorizontalBar:createComponents(bridge)
   -- Border
   self.components[1] = bridge.addBox(self.x, self.y, self.width, self.height, self.bordercolor, self.opacity)
-  self.components[1].setZIndex(-1)
+  self.components[1].setZ(-1)
   -- Background
   self.components[2] = bridge.addBox(self.x + self.borderpx, self.y + self.borderpx, self.innerwidth, self.innerheight, self.bg, self.opacity)
-  self.components[2].setZIndex(0)
+  self.components[2].setZ(0)
   -- Foreground
   self.components[3] = bridge.addBox(self.x + self.borderpx, self.y + self.borderpx, self.innerwidth * self.value, self.innerheight, self.fg, self.opacity)
-  self.components[3].setZIndex(1)
+  self.components[3].setZ(1)
 end
 
 -- Value should be beetween 0.0 and 1.0

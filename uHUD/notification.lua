@@ -16,10 +16,10 @@ end
 function Notification:createComponents(bridge)
   -- Progress
   self.components[1] = bridge.addBox(self.x, self.y, self.width * self.progress, 1, self.progresscolor, self.opacity)
-  self.components[1].setZIndex(-1)
+  self.components[1].setZ(-1)
   -- Background
   self.components[2] = bridge.addBox(self.x, self.y, self.width, self.height, self.bg, self.opacity)
-  self.components[2].setZIndex(-2)
+  self.components[2].setZ(-2)
   -- Text
   local charlen = textWidthScale(bridge, "M", 0.5)
   
